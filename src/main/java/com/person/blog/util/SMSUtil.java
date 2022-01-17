@@ -14,10 +14,7 @@ import com.aliyuncs.profile.DefaultProfile;
  */
 public class SMSUtil {
     public static int send(String mobile, String newCode) {
-        DefaultProfile profile = DefaultProfile.getProfile(
-                "cn-hangzhou",
-                "LTAI4Fz7JpXmVVZzSgzwDTyN",
-                "BwlLu7idBkoxvMihvxnTR9OF89VtzQ");
+        DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou", "********************","***************************");
         IAcsClient client = new DefaultAcsClient(profile);
         CommonRequest request = new CommonRequest();
         request.setSysMethod(MethodType.POST);
@@ -27,7 +24,7 @@ public class SMSUtil {
         request.putQueryParameter("RegionId", "cn-hangzhou");
         request.putQueryParameter("PhoneNumbers", mobile);
         request.putQueryParameter("SignName", "简阅");
-        request.putQueryParameter("TemplateCode", "SMS_162735930");
+        request.putQueryParameter("TemplateCode", "***********");
 //        String verifyCode =NewCodeUtil.getNewCode();
         request.putQueryParameter("TemplateParam", "{\"code\":" + newCode + "}");
         try {
@@ -40,36 +37,5 @@ public class SMSUtil {
         }
         return StatusConst.SUCCESS;
     }
-//    public static String send(String mobile) {
-//        DefaultProfile profile = DefaultProfile.getProfile(
-//                "cn-hangzhou",
-//                "LTAIWMVzDKXCrGRn",
-//                "LofOSXUQNCU9Bvyk4q1Ep9fAzFUdNV");
-//        IAcsClient client = new DefaultAcsClient(profile);
-//        CommonRequest request = new CommonRequest();
-//        request.setMethod(MethodType.POST);
-//        request.setDomain("dysmsapi.aliyuncs.com");
-//        request.setVersion("2017-05-25");
-//        request.setAction("SendSms");
-//        request.putQueryParameter("RegionId", "cn-hangzhou");
-//        request.putQueryParameter("PhoneNumbers", mobile);
-//        request.putQueryParameter("SignName", "简阅");
-//        request.putQueryParameter("TemplateCode", "SMS_162735622");
-//        String verifyCode = StringUtil.getVerifyCode();
-//        request.putQueryParameter("TemplateParam", "{\"code\":" + verifyCode + "}");
-//        try {
-//            CommonResponse response = client.getCommonResponse(request);
-//            System.out.println(response.getData());
-//        } catch (ServerException e) {
-//            e.printStackTrace();
-//        } catch (ClientException e) {
-//            e.printStackTrace();
-//        }
-//        return verifyCode;
-//    }
-//
-//    public static void main(String[] args) {
-//        System.out.println(send("18351895608"));
-//    }
 }
 
